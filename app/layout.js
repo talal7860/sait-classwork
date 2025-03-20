@@ -1,15 +1,26 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+// import { Geist, Geist_Mono } from "next/font/google";
+// import { Provider } from "@/components/ui/provider";
+// import Link from "next/link";
 import "./globals.css";
+import { CounterProvider } from "@/contexts/CounterContext";
+import { UserProvider } from "@/contexts/UserContext";
+import NewComponent from "./layout-with-context";
+import { AuthContextProvider } from "./firebase/_utils/auth-context";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -18,12 +29,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <AuthContextProvider>
+    <UserProvider>
+                <CounterProvider><NewComponent>{children}</NewComponent></CounterProvider>
+              </UserProvider>
+              </AuthContextProvider>
   );
 }
