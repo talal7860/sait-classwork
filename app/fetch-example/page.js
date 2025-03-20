@@ -30,10 +30,10 @@ export default function FetchExample() {
         </h1>
       </SampleChildComponent>
       <button onClick={fetchData}>Fetch Data</button>
-      <div>Set User: Name: {user.name}</div>
+      <div>Set User: Name: {user?.name}</div>
       <div>
         List of phones
-        {data.map((d) => (
+        {data?.map((d) => (
           <div key={`data-${d.id}`}>
             Name: {d.name}
             {d.data && (
