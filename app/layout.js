@@ -29,10 +29,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-      <AuthContextProvider>
-    <UserProvider>
-                <CounterProvider><NewComponent>{children}</NewComponent></CounterProvider>
-              </UserProvider>
-              </AuthContextProvider>
+    <AuthContextProvider>
+      <UserProvider>
+        <CounterProvider>
+          <NewComponent>{children}</NewComponent>
+        </CounterProvider>
+      </UserProvider>
+    </AuthContextProvider>
   );
 }

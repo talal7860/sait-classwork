@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 import { getItems, addItem } from "./_services/shopping-list-service";
-import Link from 'next/link'
+import Link from "next/link";
 
 const CloudStore = () => {
   const [items, setItems] = React.useState([]);
@@ -11,8 +11,7 @@ const CloudStore = () => {
     getItems().then((items) => {
       setItems(items);
     });
-  }
-  , []);
+  }, []);
   return (
     <div>
       <h1>Cloud Store</h1>
@@ -20,19 +19,25 @@ const CloudStore = () => {
 
       <b>Shopping List</b>
       <ol>
-      {items.map((item, index) => (
-        <li key={index}>
-          <Link href={`/cloudstore/${item.id}`}>{item.name}</Link>
-        </li>
-      ))}
+        {items.map((item, index) => (
+          <li key={index}>
+            <Link href={`/cloudstore/${item.id}`}>{item.name}</Link>
+          </li>
+        ))}
       </ol>
 
-      <input type="text" placeholder="item name" onChange={(e) => {setItem(e.target.value);}} />
+      <input
+        type="text"
+        placeholder="item name"
+        onChange={(e) => {
+          setItem(e.target.value);
+        }}
+      />
       <button
         onClick={() => {
           // Add item
           addItem({ name: item }).then(() => {
-            setItem('');
+            setItem("");
             getItems().then((items) => {
               setItems(items);
             });
@@ -43,6 +48,6 @@ const CloudStore = () => {
       </button>
     </div>
   );
-}
+};
 
 export default CloudStore;

@@ -1,7 +1,7 @@
 "use client";
 import { UserContext } from "@/contexts/UserContext";
 import React, { useContext } from "react";
-import {auth} from './_utils/access-secret';
+import { auth } from "./_utils/access-secret";
 
 const SampleChildComponent = ({ children }) => {
   return <div>{children}</div>;
@@ -9,8 +9,8 @@ const SampleChildComponent = ({ children }) => {
 
 export default function FetchExample() {
   const [data, setData] = React.useState([]);
-  const {user} = useContext(UserContext);
-  console.log('AUTH_FRONTEND', auth());
+  const { user } = useContext(UserContext);
+  console.log("AUTH_FRONTEND", auth());
   const fetchData = async () => {
     try {
       const response = await fetch("https://api.restful-api.dev/objects");

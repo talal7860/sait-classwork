@@ -1,11 +1,13 @@
 "use client";
 
-import React from "react"
+import React from "react";
 
-const ItemDetail = ({name, category, price}) => {
+const ItemDetail = ({ name, category, price }) => {
   return (
     <div>
-      <h1><b>Item Detail</b></h1>
+      <h1>
+        <b>Item Detail</b>
+      </h1>
       <div>
         <b>Name:</b> {name}
         <br />
@@ -15,6 +17,6 @@ const ItemDetail = ({name, category, price}) => {
       </div>
     </div>
   );
-}
+};
 
 export default ItemDetail;

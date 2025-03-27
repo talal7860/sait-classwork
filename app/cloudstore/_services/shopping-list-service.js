@@ -1,6 +1,12 @@
 import { db } from "../_utils/firebase";
-import { collection, getDocs, addDoc, query, doc, getDoc } from "firebase/firestore";
-
+import {
+  collection,
+  getDocs,
+  addDoc,
+  query,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 
 const addItem = async (item) => {
   try {
@@ -9,7 +15,7 @@ const addItem = async (item) => {
   } catch (e) {
     console.error("Error adding document: ", e);
   }
-}
+};
 const getItem = async (id) => {
   const docRef = doc(db, "shoppingList", id);
   const docSnap = await getDoc(docRef);
@@ -18,20 +24,16 @@ const getItem = async (id) => {
   } else {
     console.log("No such document!");
   }
-}
+};
 
 const getItems = async () => {
   const q = query(collection(db, "shoppingList"));
   const querySnapshot = await getDocs(q);
   const items = [];
   querySnapshot.forEach((doc) => {
-    items.push({...doc.data(), id: doc.id});
+    items.push({ ...doc.data(), id: doc.id });
   });
   return items;
-}
+};
 
-export {
-  addItem,
-  getItems,
-  getItem,
-}
+export { addItem, getItems, getItem };

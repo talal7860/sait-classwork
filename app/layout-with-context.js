@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Geist, Geist_Mono } from "next/font/google";
 import { Provider } from "@/components/ui/provider";
 import Link from "next/link";
@@ -17,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export default function NewComponent({ children }) {
-  const currentUser = useCurrentUser()
+  const currentUser = useCurrentUser();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -66,7 +65,7 @@ export default function NewComponent({ children }) {
             </nav>
 
             <main className="p-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {children}
+              {children}
             </main>
           </div>
         </Provider>

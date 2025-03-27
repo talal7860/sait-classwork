@@ -1,28 +1,29 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { useUserAuth } from "./_utils/auth-context"
-
+import { useEffect } from "react";
+import { useUserAuth } from "./_utils/auth-context";
 
 const Firebase = () => {
-  const {gitHubSignIn, user} = useUserAuth()
+  const { gitHubSignIn, user } = useUserAuth();
   const onClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     gitHubSignIn();
-  }
+  };
   useEffect(() => {
     if (user) {
-      console.log(user)
+      console.log(user);
     }
-  }, [user])
+  }, [user]);
   return (
     <div>
       Welcome to cloudstore
-      {user?.email ? `Welcome ${user.email}` : (
+      {user?.email ? (
+        `Welcome ${user.email}`
+      ) : (
         <button onClick={onClick}>Login</button>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Firebase
+export default Firebase;
