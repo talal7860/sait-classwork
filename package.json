@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --no-cache",
-    "format": "prettier --write app/"
+    "format": "prettier --write app/ pages/",
+    "prettier:check": "prettier --check app/ pages/"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.8.1",
@@ -15,6 +16,7 @@
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.1.1",
     "@mui/material": "^6.4.6",
+    "@neondatabase/serverless": "^1.0.0",
     "cookie": "^1.0.2",
     "encoding": "^0.1.13",
     "firebase": "^11.4.0",

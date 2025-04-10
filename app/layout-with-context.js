@@ -37,6 +37,12 @@ export default function NewComponent({ children }) {
               Home
             </Link>
             <Link
+              href="/blog"
+              className="block sm:inline-block m-2 p-2 bg-blue-500 text-white rounded"
+            >
+              Blog
+            </Link>
+            <Link
               href="#"
               className="block sm:inline-block m-2 p-2 bg-blue-500 text-white rounded"
             >
