@@ -1,7 +1,7 @@
- 
-export default function handler(
-  req,
+export default function handler(req, res) {
   res
-) {
-  res.status(200).json({ message: `Hello from Next.js!: ${process.env.NEXT_JS_MY_APP_SECRET}` })
+    .status(200)
+    .json({
+      message: `Hello from Next.js!: ${process.env.NEXT_JS_MY_APP_SECRET}`,
+    });
 }

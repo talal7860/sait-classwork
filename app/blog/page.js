@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import { dbTypeAtom } from "../atoms";
 import { useAtom } from "jotai";
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch";
 import { MenuItem, Select } from "@mui/material";
 
 const BlogPage = () => {
@@ -16,7 +16,7 @@ const BlogPage = () => {
       headers: {
         "Content-Type": "application/json",
         "X-DB-Type": dbType,
-      }
+      },
     })
       .then((response) => response.json())
       .then((json) => setPosts(json));
@@ -32,15 +32,15 @@ const BlogPage = () => {
     <div>
       <h1>Blog Page</h1>
       <Select
-    value={dbType}
-    label="Db Type"
-    onChange={(e) => {
-      setDbType(e.target.value);
-    }}
-  >
-    <MenuItem value={'firebase'}>Firebase</MenuItem>
-    <MenuItem value={'neon'}>Neon</MenuItem>
-  </Select>
+        value={dbType}
+        label="Db Type"
+        onChange={(e) => {
+          setDbType(e.target.value);
+        }}
+      >
+        <MenuItem value={"firebase"}>Firebase</MenuItem>
+        <MenuItem value={"neon"}>Neon</MenuItem>
+      </Select>
       <Link href="/blog/create">Create Post</Link>
       <p>This is a blog page.</p>
       {posts.map((post) => (
