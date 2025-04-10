@@ -21,6 +21,12 @@ export default async function handler(
     maxAge: 60 * 60 * 24 * 7, // One week
     path: '/',
   })
+
+
+
+
+
+
   res.setHeader('Set-Cookie', cookie)
-  res.status(200).json({ message: 'Successfully set cookie!' })
+  res.status(200).json({ message: 'Successfully signed in!' })
 }

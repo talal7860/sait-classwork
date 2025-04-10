@@ -3,14 +3,24 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "@/components/Button";
+import { dbTypeAtom } from "../atoms";
+import { useAtom } from "jotai";
+import Switch from '@mui/material/Switch';
+import { MenuItem, Select } from "@mui/material";
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
+  const [dbType, setDbType] = useAtom(dbTypeAtom);
   useEffect(() => {
-    fetch("/api/posts")
+    fetch("/api/posts", {
+      headers: {
+        "Content-Type": "application/json",
+        "X-DB-Type": dbType,
+      }
+    })
       .then((response) => response.json())
       .then((json) => setPosts(json));
-  }, []);
+  }, [dbType]);
   const handleDelete = (id) => {
     fetch(`/api/posts/delete/${id}`, {
       method: "DELETE",
@@ -21,6 +31,16 @@ const BlogPage = () => {
   return (
     <div>
       <h1>Blog Page</h1>
+      <Select
+    value={dbType}
+    label="Db Type"
+    onChange={(e) => {
+      setDbType(e.target.value);
+    }}
+  >
+    <MenuItem value={'firebase'}>Firebase</MenuItem>
+    <MenuItem value={'neon'}>Neon</MenuItem>
+  </Select>
       <Link href="/blog/create">Create Post</Link>
       <p>This is a blog page.</p>
       {posts.map((post) => (
